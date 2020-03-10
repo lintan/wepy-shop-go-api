@@ -1,0 +1,173 @@
+<template>
+  <view class="bc">
+    <view class="discover">
+            <view class="discover_title_doc">发现好商品</view>
+        </view>
+    <view class="shop_item">
+      <navigator class="list" wx:for="{{list}}" wx:key="item" url="/pages/goods_detail?id={{item.goods_id}}">
+        <view class="image_box">
+          <image src="{{item.pic_cover_small}}"></image>
+        </view>
+        <view class="goods">
+          <view class="product_name">{{item.goods_name}}</view>
+          <view class="product_info">
+            <view class="price">￥{{item.price}}</view>
+            <view class="sale_num">销量{{item.sales}}件</view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy';
+import api from '@/api/api';
+
+export default class Discover extends wepy.component {
+
+  props = {
+    list: []
+  }
+
+  data = {
+
+  }
+  onLoad() {
+    let that = this;
+    console.log(this.list)
+  }
+  getList() {
+    console.log("调用getList方法6666666")
+  }
+  computed = {
+
+  }
+  methods = {}
+
+}
+
+</script>
+<style lang="less">
+.discover {
+  text-align: center;
+  font-size: 30rpx;
+  padding: 30rpx 0rpx;
+  position: relative;
+}
+
+.discover_title_doc {
+  display: inline-block;
+  position: relative;
+  z-index: 999;
+  width: 190rpx;
+  background: #f7f7f7;
+}
+
+.discover:before {
+  content: '';
+  height: 1rpx;
+  width: 460rpx;
+  position: absolute;
+  background: #dbdbdb;
+  top: 50rpx;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
+.discover_list {
+  .discover_img {
+    width: 100%;
+    height: 390rpx;
+  }
+  .info {
+    padding: 5rpx;
+    color: #000000;
+    font-size: 26rpx;
+    line-height: 35rpx;
+    display: flex;
+    align-items: center;
+  }
+  .item {
+    background: #fff;
+    padding: 15rpx;
+    margin-bottom: 15rpx;
+  }
+}
+
+.bc {
+  background: #f7f7f7;
+}
+
+
+.shop_item {
+  padding: 0rpx 15rpx;
+  background: #f7f7f7;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 30rpx;
+}
+
+.list:nth-child(odd) {
+  margin-right: 10rpx;
+}
+
+.list {
+  background: #fff;
+  width: 355rpx;
+  margin-top: 15rpx;
+  .image_box {
+    image {
+      width: 100%;
+      height: 345rpx;
+    }
+  }
+  .product_name {
+    color: #1a1a1a;
+    font-size: 28rpx;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+  }
+  .price {
+    color: #de0000;
+    font-size: 35rpx;
+    font-weight: 600;
+  }
+  .cost_price {
+    color: #666666;
+    font-size: 24rpx;
+    text-decoration: line-through;
+    font-weight: 600;
+  }
+  .sale_num {
+    color: #666666;
+    font-size: 22rpx;
+  }
+  .goods {
+    padding: 15rpx 12rpx;
+  }
+  .product_info {
+    padding-top: 20rpx;
+    display: flex;
+    align-items: flex-end;
+  }
+  .cost_price {
+    padding-left: 20rpx;
+  }
+  .sale_num {
+    padding-left: 20rpx;
+  }
+}
+.goods_level{
+  background-color: #ccc;
+  font-size: 20rpx;
+  margin-left: 6rpx;
+  border-radius: 6rpx;
+  color:#fff;
+  padding:0 4rpx;
+  display: inline-block;
+}
+</style>
